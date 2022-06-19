@@ -37,8 +37,33 @@ gridSize.addEventListener('input', function (e) {
 
 // change color
 function changeColor(e) {
-  e.target.classList.add('black');
+  if (mode === 'pencil') {
+    e.target.classList.add('black');
+    e.target.classList.remove('white');
+    e.target.style.backgroundColor = null;
+    e.target.style.opacity = null;
+  } else if (mode === 'rainbow') {
+    const green = Math.floor(Math.random() * 250);
+    const blue = Math.floor(Math.random() * 250);
+    const red = Math.floor(Math.random() * 250);
+    e.target.style.backgroundColor = `rgb(${red}, ${green}, ${blue})`;
+    e.target.style.opacity = null;
+  } else if (mode === 'erase') {
+    e.target.classList.add('white');
+    e.target.style.backgroundColor = null;
+    e.target.style.opacity = null;
+  } else if (mode === 'pickColor') {
+    e.target.style.backgroundColor = pickColor.value;
+    e.target.style.opacity = null;
+  } else if (mode === 'shading') {
+    e.target.classList.remove('white');
+    e.target.classList.add('black');
+    e.target.style.opacity = Number(e.target.style.opacity) + 0.1;
+  } else {
+    e.target.classList.add('black')
+  }
 }
+
 
 // reset grid
 reset.addEventListener('click', () => resetGrid());
@@ -48,3 +73,35 @@ function resetGrid() {
 }
 
 
+// erase
+erases.addEventListener('click', () => eraseMode());
+function eraseMode() {
+  mode = 'erase';
+}
+
+
+// pencil
+pencil.addEventListener('click', () => pencilMode());
+function pencilMode() {
+  mode = 'pencil';
+}
+
+
+// rainbow 
+rainbow.addEventListener('click', () => rainbowMode());
+function rainbowMode() {
+  mode = 'rainbow';
+}
+
+
+// pick a color
+pickColor.addEventListener('click', () => pickColorMode());
+function pickColorMode() {
+  mode = 'pickColor';
+}
+
+// shading
+shading.addEventListener('click', () => shadeMode());
+function shadeMode() {
+  mode = 'shading';
+}
