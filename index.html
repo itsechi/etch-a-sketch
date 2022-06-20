@@ -8,15 +8,20 @@
 </head>
 
 <body>
-  <div id="container"></div>
-  <input type="range" id="range" min="5" max="100">
-  <input type="color" id="color">
-  <button id="reset">Reset</button>
-  <button id="eraser">Eraser</button>
-  <button id="pencil">Pencil</button>
-  <button id="rainbow">Rainbow</button>
-  <button id="shading">Shading</button>
+  <h1>ETCH A SKETCH</h1>
+  <button id="reset" class="button">Reset</button>
+  <button id="eraser" class="button">Eraser</button>
+  <button id="pencil" class="button">Pencil</button>
+  <button id="rainbow" class="button">Rainbow</button>
+  <button id="shading" class="button">Shading</button>
+  <div class="ownColor">
+    <button class="button pickColor">Choose your own color:
+      <input type="color" id="color"></button>
+  </div>
   <div class="grid-size"></div>
+  <input type="range" id="range" min="5" max="100" class="slider">
+  <div id="container"></div>
+
 </body>
 <script src="script.js"></script>
 

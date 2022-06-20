@@ -1,6 +1,6 @@
 const container = document.getElementById('container');
 const reset = document.getElementById('reset');
-const erases = document.querySelector('#eraser');
+const eraser = document.querySelector('#eraser');
 const pencil = document.querySelector('#pencil');
 const rainbow = document.querySelector('#rainbow');
 const pickColor = document.querySelector('#color');
@@ -21,7 +21,7 @@ function createGrid(size) {
     const grid = document.createElement('div');
     grid.setAttribute('id', 'grid');
     container.appendChild(grid);
-    grid.addEventListener('mouseover', changeColor)
+    grid.addEventListener('mouseover', changeColor);
   }
 }
 createGrid();
@@ -58,7 +58,7 @@ function changeColor(e) {
   } else if (mode === 'shading') {
     e.target.classList.remove('white');
     e.target.classList.add('black');
-    e.target.style.opacity = Number(e.target.style.opacity) + 0.1;
+    e.target.style.opacity = Number(e.target.style.opacity) + 0.2;
   } else {
     e.target.classList.add('black')
   }
@@ -74,7 +74,7 @@ function resetGrid() {
 
 
 // erase
-erases.addEventListener('click', () => eraseMode());
+eraser.addEventListener('click', () => eraseMode());
 function eraseMode() {
   mode = 'erase';
 }
