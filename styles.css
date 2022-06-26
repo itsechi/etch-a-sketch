@@ -26,6 +26,7 @@ h1 {
 
 #grid {
   border: none;
+  user-select: none;
 }
 
 .black {

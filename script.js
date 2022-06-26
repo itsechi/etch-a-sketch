@@ -9,6 +9,10 @@ const gridSize = document.querySelector('#range');
 let gridValue = document.querySelector('.grid-size');
 let mode = '';
 
+let isMouseDown = false;
+document.addEventListener('mousedown', () => isMouseDown = true);
+document.addEventListener('mouseup', () => isMouseDown = false);
+
 gridValue.textContent = `50x50`; // display default size of the grid
 
 
@@ -22,6 +26,7 @@ function createGrid(size) {
     grid.setAttribute('id', 'grid');
     container.appendChild(grid);
     grid.addEventListener('mouseover', changeColor);
+    grid.addEventListener('mousedown', changeColor);
   }
 }
 createGrid();
@@ -37,6 +42,7 @@ gridSize.addEventListener('input', function (e) {
 
 // change color
 function changeColor(e) {
+  if (e.type == 'mouseover' && !isMouseDown) return;
   if (mode === 'pencil') {
     e.target.classList.add('black');
     e.target.classList.remove('white');
